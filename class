@@ -1,0 +1,30 @@
+#ifndef CLASS_H
+#define CLASS_H
+#include <iostream>
+#include <math.h>
+
+double const REarth = 6371000; //Радиус Земли,м
+double const Re = 6378136.3; //Экваториальный радиус Земли, м
+double const a = 0.0033528037; //Геометрическое сжатие Земли
+
+using namespace std;
+
+class Class
+{
+public:
+    Class();
+    double Vxs, Vys, Vzs;
+    double atan2(double s, double c); //угол 0..2*pi рад
+    void toHAzL(double xx, double yy, double zz, double xp, double yp, double zp); //Перевод Гринвичских x,y,z
+    //в высоту-азимут-дальность станции набдлюения
+    void toXYZ(double fi, double la, double h); //Перевод широты-долготы-высоты в Гринвичскую систему
+    void toLatLongH(double xx, double yy, double zz); //Перевод Гринвичских x,y,z в широту-долготу-высоту
+    double x, y, z;
+    double x1, x2, y1, y2, z1, z2; //координаты точки старта, точки падения
+    double hz, Az, L; //высота, азимут, дальность
+    double x_s, y_s, z_s; //гринвичские координаты станции наблюдения
+    double La, Fi, h; //широта, долгота, высота
+    void calculation_ncos_V (double beta);
+};
+
+#endif // CLASS_H
